@@ -64,17 +64,14 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8">
           <a 
-            href="#" 
+            href="/marketplace" 
             className="nav-link"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToTop();
-            }}
           >
-            Home
+            Marketplace
           </a>
-          <a href="#features" className="nav-link">About</a>
-          <a href="#details" className="nav-link">Contact</a>
+          <a href="/dashboard" className="nav-link">Dashboard</a>
+          <a href="/create" className="nav-link">Sell</a>
+          <a href="/profile" className="nav-link">Profile</a>
         </nav>
 
         {/* Mobile menu button - increased touch target */}
@@ -94,36 +91,44 @@ const Navbar = () => {
       )}>
         <nav className="flex flex-col space-y-8 items-center mt-8">
           <a 
-            href="#" 
-            className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToTop();
-              setIsMenuOpen(false);
-              document.body.style.overflow = '';
-            }}
-          >
-            Home
-          </a>
-          <a 
-            href="#features" 
+            href="/marketplace" 
             className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
             onClick={() => {
               setIsMenuOpen(false);
               document.body.style.overflow = '';
             }}
           >
-            About
+            Marketplace
           </a>
           <a 
-            href="#details" 
+            href="/dashboard" 
             className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
             onClick={() => {
               setIsMenuOpen(false);
               document.body.style.overflow = '';
             }}
           >
-            Contact
+            Dashboard
+          </a>
+          <a 
+            href="/create" 
+            className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
+            onClick={() => {
+              setIsMenuOpen(false);
+              document.body.style.overflow = '';
+            }}
+          >
+            Sell
+          </a>
+          <a 
+            href="/profile" 
+            className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" 
+            onClick={() => {
+              setIsMenuOpen(false);
+              document.body.style.overflow = '';
+            }}
+          >
+            Profile
           </a>
         </nav>
       </div>
