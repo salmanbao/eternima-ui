@@ -19,7 +19,7 @@ const ImageShowcaseSection = () => {
           <div className="w-full">
             <img 
               src="/lovable-uploads/c3d5522b-6886-4b75-8ffc-d020016bb9c2.png" 
-              alt="Advanced humanoid robot with orange and white design" 
+              alt="Advanced humanoid robot with blue and white design" 
               className="w-full h-auto object-cover"
             />
           </div>
