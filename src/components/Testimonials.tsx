@@ -10,29 +10,23 @@ interface TestimonialProps {
 }
 
 const testimonials: TestimonialProps[] = [{
-  content: "Atlas transformed our production line, handling repetitive tasks while our team focuses on innovation. 30% increase in output within three months.",
-  author: "Sarah Chen",
-  role: "VP of Operations, Axion Manufacturing",
+  content: "I want to hear Grandma read my name in her voice. — Import a voice clip, pin it to a family memory album.",
+  author: "Grandchild Journey",
+  role: "Family Memory Preservation",
   gradient: "from-blue-700 via-indigo-800 to-purple-900",
   backgroundImage: "/background-section1.png"
 }, {
-  content: "Implementing Atlas in our fulfillment centers reduced workplace injuries by 40% while improving order accuracy. The learning capabilities are remarkable.",
-  author: "Michael Rodriguez",
-  role: "Director of Logistics, GlobalShip",
+  content: "I need to capture why I made a decision. — Quick 'why' capture ties rationale to a project snapshot.",
+  author: "Founder Journey",
+  role: "Professional Decision Documentation",
   gradient: "from-indigo-900 via-blue-800 to-cyan-500",
   backgroundImage: "/background-section2.png"
 }, {
-  content: "Atlas adapted to our lab protocols faster than any system we've used. It's like having another researcher who never gets tired and maintains perfect precision.",
-  author: "Dr. Amara Patel",
-  role: "Lead Scientist, BioAdvance Research",
-  gradient: "from-purple-800 via-pink-700 to-red-500",
+  content: "I need context before session — With client consent, review emotion trends and flagged memories.",
+  author: "Therapist Journey",
+  role: "Consent-Based Care Support",
+  gradient: "from-purple-800 via-pink-700 to-blue-500",
   backgroundImage: "/background-section3.png"
-}, {
-  content: "As a mid-size business, we never thought advanced robotics would be accessible to us. Atlas changed that equation entirely with its versatility and ease of deployment.",
-  author: "Jason Lee",
-  role: "CEO, Innovative Solutions Inc.",
-  gradient: "from-blue-600 via-indigo-500 to-purple-600",
-  backgroundImage: "/background-section1.png"
 }];
 
 const TestimonialCard = ({
@@ -68,9 +62,9 @@ const Testimonials = () => {
           </div>
         </div>
         
-        <h2 className="text-5xl font-display font-bold mb-12 text-left">What others say</h2>
+        <h2 className="text-5xl font-display font-bold mb-12 text-left">Real User Journeys</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => <TestimonialCard key={index} content={testimonial.content} author={testimonial.author} role={testimonial.role} gradient={testimonial.gradient} backgroundImage={testimonial.backgroundImage} />)}
         </div>
       </div>

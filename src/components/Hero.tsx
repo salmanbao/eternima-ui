@@ -101,26 +101,36 @@ const Hero = () => {
       <div className="container px-4 sm:px-6 lg:px-8" ref={containerRef}>
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-center">
           <div className="w-full lg:w-1/2">
-            <div 
-              className="pakistan-chip mb-3 sm:mb-6 opacity-0 animate-fade-in" 
-              style={{ animationDelay: "0.1s" }}
-            >
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pakistan-500 text-white mr-2">🇵🇰</span>
-              <span>Made for Pakistan</span>
-            </div>
-            
             <h1 
               className="section-title text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight opacity-0 animate-fade-in" 
-              style={{ animationDelay: "0.3s" }}
+              style={{ animationDelay: "0.1s" }}
             >
-              Pakistan's Digital<br className="hidden sm:inline" />Marketplace
+              <span className="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-pulse-600 via-pulse-500 to-accent-500">
+                Eternima
+              </span>
+              {" "}—{" "}
+              <span className="text-gray-900">preserve your life, voice, and memory forever</span>
             </h1>
             
             <p 
-              style={{ animationDelay: "0.5s" }} 
-              className="section-subtitle mt-3 sm:mt-6 mb-4 sm:mb-8 leading-relaxed opacity-0 animate-fade-in text-gray-950 font-normal text-base sm:text-lg text-left"
+              style={{ animationDelay: "0.3s" }} 
+              className="section-subtitle mt-3 sm:mt-6 mb-3 sm:mb-4 leading-relaxed opacity-0 animate-fade-in text-gray-950 font-normal text-base sm:text-lg text-left"
             >
-              Empower Pakistani creators to monetize their skills and build thriving digital businesses.
+              A private, verifiable digital mirror that learns how you think, feel, and act — so your stories, values and memories live on for the people who matter.
+            </p>
+            
+            <p 
+              style={{ animationDelay: "0.4s" }} 
+              className="mt-3 sm:mt-4 mb-3 sm:mb-4 leading-relaxed opacity-0 animate-fade-in text-gray-700 text-sm sm:text-base text-left"
+            >
+              Eternima helps you capture daily thoughts, voice recordings and emotional moments, turning them into a private, searchable life memory and a personalized reflection AI. Use it now for self-discovery, family continuity, or preserving stories for future generations.
+            </p>
+            
+            <p 
+              style={{ animationDelay: "0.5s" }} 
+              className="mt-2 sm:mt-3 mb-4 sm:mb-6 leading-relaxed opacity-0 animate-fade-in text-gray-600 text-sm italic text-left"
+            >
+              Private by design — your data stays with you; you control who can access and inherit it.
             </p>
             
             <div 
@@ -128,11 +138,17 @@ const Hero = () => {
               style={{ animationDelay: "0.7s" }}
             >
               <a 
-                href="/marketplace" 
+                href="#how-it-works" 
                 className="button-primary flex items-center justify-center group w-full sm:w-auto text-center"
               >
-                Explore Marketplace
+                Get the App — start your reflection
                 <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </a>
+              <a 
+                href="#how-it-works" 
+                className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-pulse-600 text-pulse-600 hover:bg-pulse-50 rounded-lg font-semibold transition-colors flex items-center justify-center w-full sm:w-auto text-center"
+              >
+                How it works
               </a>
             </div>
           </div>

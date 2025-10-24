@@ -48,27 +48,27 @@ const HowItWorks = () => {
   const stepsData = [
     {
       number: "01",
-      title: "Request Access",
-      description: "Fill out the application form to join our early access program and secure your spot in line.",
-      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80"
+      title: "Capture",
+      description: "Use the mobile app (or our Lumirec™ wearable recorder) to save short voice reflections, text notes, and moments. Everything is encrypted on your device.",
+      image: "/lovable-uploads/22d31f51-c174-40a7-bd95-00e4ad00eaf3.png"
     },
     {
       number: "02",
-      title: "Personalization",
-      description: "We'll work with you to customize Atlas to your specific needs and preferences.",
-      image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80"
+      title: "Reflect",
+      description: "ETI.AI™ (the reflective intelligence) analyzes patterns in tone, language and behavior and presents a private, time-sliced cognitive profile so you can see how you change and why.",
+      image: "/lovable-uploads/5663820f-6c97-4492-9210-9eaa1a8dc415.png"
     },
     {
       number: "03",
-      title: "Integration",
-      description: "Atlas arrives at your location and is integrated into your living or working environment.",
-      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80"
+      title: "Secure",
+      description: "Optional LuxVault Capsule™ stores your encrypted life archive offline and tamper-evidently — protected by biometric access and a unique SoulNFT™ identity.",
+      image: "/lovable-uploads/af412c03-21e4-4856-82ff-d1a975dc84a9.png"
     },
     {
       number: "04",
-      title: "Adaptation",
-      description: "Through daily interaction, Atlas learns and adapts to your routines, preferences, and needs.",
-      image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80"
+      title: "Share or inherit",
+      description: "You decide if and when to share — set permissions, designate trusted executors, and create inheritable continuity rules that activate only under conditions you define.",
+      image: "/lovable-uploads/dc13e94f-beeb-4671-8a22-0968498cdb4c.png"
     }
   ];
 
@@ -115,12 +115,9 @@ const HowItWorks = () => {
       
       <div className="section-container">
         <div className="text-center mb-16 opacity-0 fade-in-stagger">
-          <div className="pulse-chip mx-auto mb-4">
-            <span>Process</span>
-          </div>
-          <h2 className="section-title mb-4">How Atlas Integrates Into Your Life</h2>
-          <p className="section-subtitle mx-auto">
-            A seamless four-step process from request to full integration.
+          <h2 className="section-title mb-4">How It Works</h2>
+          <p className="section-subtitle mx-auto max-w-3xl">
+            Getting started is simple. Eternima combines an easy mobile app with optional secure hardware so you can capture, understand and preserve life in a way that's private, verifiable, and human-centered.
           </p>
         </div>
         
@@ -162,6 +159,15 @@ const HowItWorks = () => {
               </div>
             ))}
           </div>
+        </div>
+        
+        <div className="text-center mt-12">
+          <button className="px-8 py-4 bg-pulse-600 hover:bg-pulse-700 text-white rounded-lg font-semibold transition-colors mr-4 mb-4 sm:mb-0">
+            Start a reflection
+          </button>
+          <button className="px-8 py-4 border-2 border-pulse-600 text-pulse-600 hover:bg-pulse-50 rounded-lg font-semibold transition-colors">
+            Request demo for hardware
+          </button>
         </div>
       </div>
     </section>

@@ -91,54 +91,41 @@ const Features = () => {
     <section className="py-12 sm:py-16 md:py-20 pb-0 relative bg-gray-50" id="features" ref={sectionRef}>
       <div className="section-container">
         <div className="text-center mb-10 sm:mb-16">
-          <div className="pakistan-chip mx-auto mb-3 sm:mb-4 opacity-0 fade-in-element">
-            <span>Platform Features</span>
-          </div>
           <h2 className="section-title mb-3 sm:mb-4 opacity-0 fade-in-element">
-            Everything You Need to <br className="hidden sm:block" />Succeed Online
+            Key Value Propositions
           </h2>
-          <p className="section-subtitle mx-auto opacity-0 fade-in-element">
-            Built specifically for Pakistani entrepreneurs and creators to monetize their expertise.
-          </p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-          <FeatureCard
-            icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 sm:w-6 sm:h-6"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>}
-            title="Quick Setup"
-            description="Start selling in minutes with our easy-to-use product creation tools designed for Pakistani creators."
-            index={0}
-          />
-          <FeatureCard
-            icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 sm:w-6 sm:h-6"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>}
-            title="Local Payments"
-            description="Accept payments in PKR through JazzCash, EasyPaisa, and bank transfers with instant settlements."
-            index={1}
-          />
-          <FeatureCard
-            icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 sm:w-6 sm:h-6"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>}
-            title="Community Building"
-            description="Build engaged communities around your products with built-in chat and feedback systems."
-            index={2}
-          />
-          <FeatureCard
-            icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 sm:w-6 sm:h-6"><path d="M3 3v18h18"></path><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path></svg>}
-            title="Analytics Dashboard"
-            description="Track your sales, customer engagement, and revenue with detailed analytics in Urdu and English."
-            index={3}
-          />
-          <FeatureCard
-            icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 sm:w-6 sm:h-6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path></svg>}
-            title="Secure Platform"
-            description="Bank-level security for all transactions and data, ensuring safe business operations for Pakistani entrepreneurs."
-            index={4}
-          />
-          <FeatureCard
-            icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 sm:w-6 sm:h-6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>}
-            title="24/7 Support"
-            description="Get help in Urdu and English from our dedicated support team, available round the clock."
-            index={5}
-          />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8">
+          <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-pulse-50 to-white border border-pulse-100 hover:shadow-elegant transition-all duration-300 opacity-0 fade-in-element">
+            <h3 className="text-xl sm:text-2xl font-display font-semibold mb-3 sm:mb-4 text-pulse-600">Reflect — Understand yourself</h3>
+            <p className="text-gray-700 text-sm sm:text-base mb-4">
+              Capture voice, text, and short reflections. See emotional patterns and growth over time.
+            </p>
+            <p className="text-sm text-gray-600 italic">
+              (Powered by the ETI.AI™ reflective system)
+            </p>
+          </div>
+          
+          <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-accent-50 to-white border border-accent-100 hover:shadow-elegant transition-all duration-300 opacity-0 fade-in-element">
+            <h3 className="text-xl sm:text-2xl font-display font-semibold mb-3 sm:mb-4 text-accent-600">Preserve — Private and tamper-evident</h3>
+            <p className="text-gray-700 text-sm sm:text-base">
+              Store everything in a secure offline capsule and encrypted vault. Only you decide who can access your memories.
+            </p>
+          </div>
+          
+          <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-pulse-50 to-white border border-pulse-100 hover:shadow-elegant transition-all duration-300 opacity-0 fade-in-element">
+            <h3 className="text-xl sm:text-2xl font-display font-semibold mb-3 sm:mb-4 text-pulse-600">Pass on — Verifiable continuity</h3>
+            <p className="text-gray-700 text-sm sm:text-base">
+              When you choose, trusted family can access an inheritable digital identity that preserves voice, stories and preferences with clear provenance.
+            </p>
+          </div>
+        </div>
+        
+        <div className="text-center">
+          <button className="px-8 py-4 bg-pulse-600 hover:bg-pulse-700 text-white rounded-lg font-semibold transition-colors">
+            Explore features
+          </button>
         </div>
       </div>
     </section>
