@@ -21,11 +21,11 @@ const PrivacySecurity = () => {
   ];
 
   return (
-    <section className="w-full py-12 sm:py-20 bg-gradient-to-b from-pulse-50 to-white" id="privacy">
+    <section className="w-full py-12 sm:py-20 bg-gradient-to-b from-muted/30 to-background" id="privacy">
       <div className="section-container">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-4">Privacy & Security</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+          <h2 className="section-title">Privacy & Security</h2>
+          <p className="section-subtitle mx-auto mb-8">
             Privacy is central. We design for the person, not the platform.
           </p>
         </div>
@@ -34,12 +34,12 @@ const PrivacySecurity = () => {
           {features.map((feature, index) => (
             <div 
               key={index}
-              className="p-6 sm:p-8 rounded-2xl bg-white border border-pulse-200 hover:shadow-elegant transition-all duration-300 animate-on-scroll"
+              className="p-6 sm:p-8 rounded-2xl bg-card border border-border hover:shadow-elegant transition-all duration-300 animate-on-scroll"
             >
-              <h3 className="text-lg sm:text-xl font-display font-semibold mb-3 text-pulse-600">
+              <h3 className="text-lg sm:text-xl font-display font-semibold mb-3 text-primary">
                 {feature.title}
               </h3>
-              <p className="text-gray-700 text-sm sm:text-base">
+              <p className="text-foreground text-sm sm:text-base">
                 {feature.description}
               </p>
             </div>
@@ -47,7 +47,7 @@ const PrivacySecurity = () => {
         </div>
 
         <div className="text-center">
-          <p className="text-lg text-gray-700 italic max-w-2xl mx-auto">
+          <p className="text-lg text-foreground italic max-w-2xl mx-auto">
             "Everything we build is designed so you — and only you — keep control."
           </p>
         </div>

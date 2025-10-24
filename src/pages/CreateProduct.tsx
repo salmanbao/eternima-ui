@@ -73,7 +73,7 @@ const CreateProduct = () => {
       <div className="section-container max-w-4xl">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Create New Product</h1>
-          <p className="text-gray-600">Share your expertise and start earning with Pakistani creators</p>
+          <p className="text-muted-foreground">Share your expertise and start earning with creators worldwide</p>
         </div>
 
         <div className="bg-white rounded-xl shadow-elegant p-8">
@@ -121,7 +121,7 @@ const CreateProduct = () => {
                   id="title"
                   value={formData.title}
                   onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-pakistan-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                   placeholder="Enter product title"
                 />
               </div>
@@ -134,7 +134,7 @@ const CreateProduct = () => {
                   id="category"
                   value={formData.category}
                   onChange={(e) => setFormData(prev => ({ ...prev, category: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-pakistan-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                 >
                   <option value="">Select a category</option>
                   {categories.map(cat => (
@@ -154,7 +154,7 @@ const CreateProduct = () => {
                 rows={6}
                 value={formData.description}
                 onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
-                className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-pakistan-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                 placeholder="Describe your product in detail..."
               />
             </div>
@@ -172,7 +172,7 @@ const CreateProduct = () => {
                     id="price"
                     value={formData.price}
                     onChange={(e) => setFormData(prev => ({ ...prev, price: e.target.value }))}
-                    className="w-full pl-8 pr-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-pakistan-500 focus:border-transparent"
+                    className="w-full pl-8 pr-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                     placeholder="0"
                   />
                 </div>
@@ -187,7 +187,7 @@ const CreateProduct = () => {
                   id="tags"
                   value={formData.tags}
                   onChange={(e) => setFormData(prev => ({ ...prev, tags: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-pakistan-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                   placeholder="e.g. marketing, digital, course"
                 />
               </div>
@@ -200,7 +200,7 @@ const CreateProduct = () => {
               </label>
               <div
                 className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
-                  dragActive ? 'border-pakistan-500 bg-pakistan-50' : 'border-gray-300'
+                  dragActive ? 'border-primary bg-muted' : 'border-border'
                 }`}
                 onDragEnter={handleDrag}
                 onDragLeave={handleDrag}

@@ -13,10 +13,10 @@ const StatCard = ({ title, value, icon: Icon, change }: {
       <div>
         <p className="text-sm font-medium text-gray-600">{title}</p>
         <p className="text-2xl font-bold text-gray-900">{value}</p>
-        <p className="text-sm text-pakistan-500">{change}</p>
+        <p className="text-sm text-primary">{change}</p>
       </div>
-      <div className="w-12 h-12 bg-pakistan-100 rounded-lg flex items-center justify-center">
-        <Icon className="w-6 h-6 text-pakistan-600" />
+      <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center">
+        <Icon className="w-6 h-6 text-primary" />
       </div>
     </div>
   </div>
@@ -72,7 +72,7 @@ const Dashboard = () => {
                 { action: "Product updated", description: "Updated pricing for Web Development Course", time: "6 hours ago" },
               ].map((item, index) => (
                 <div key={index} className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-pakistan-500 rounded-full mt-2"></div>
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
                   <div>
                     <p className="font-medium text-gray-900">{item.action}</p>
                     <p className="text-sm text-gray-600">{item.description}</p>
@@ -97,7 +97,7 @@ const Dashboard = () => {
                     <p className="font-medium text-gray-900">{product.name}</p>
                     <p className="text-sm text-gray-600">{product.sales} sales</p>
                   </div>
-                  <p className="font-semibold text-pakistan-600">{product.revenue}</p>
+                  <p className="font-semibold text-primary">{product.revenue}</p>
                 </div>
               ))}
             </div>

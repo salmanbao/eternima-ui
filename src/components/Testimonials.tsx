@@ -13,19 +13,19 @@ const testimonials: TestimonialProps[] = [{
   content: "I want to hear Grandma read my name in her voice. — Import a voice clip, pin it to a family memory album.",
   author: "Grandchild Journey",
   role: "Family Memory Preservation",
-  gradient: "from-blue-700 via-indigo-800 to-purple-900",
+  gradient: "from-secondary via-primary to-secondary",
   backgroundImage: "/background-section1.png"
 }, {
   content: "I need to capture why I made a decision. — Quick 'why' capture ties rationale to a project snapshot.",
   author: "Founder Journey",
   role: "Professional Decision Documentation",
-  gradient: "from-indigo-900 via-blue-800 to-cyan-500",
+  gradient: "from-primary via-secondary to-primary",
   backgroundImage: "/background-section2.png"
 }, {
   content: "I need context before session — With client consent, review emotion trends and flagged memories.",
   author: "Therapist Journey",
   role: "Consent-Based Care Support",
-  gradient: "from-purple-800 via-pink-700 to-blue-500",
+  gradient: "from-secondary/80 via-primary/90 to-secondary",
   backgroundImage: "/background-section3.png"
 }];
 

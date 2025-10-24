@@ -63,25 +63,11 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom colors for Pakistan platform
-				pakistan: {
-					"50": "#eff6ff",
-					"100": "#dbeafe", 
-					"200": "#bfdbfe",
-					"300": "#93c5fd",
-					"400": "#60a5fa",
-					"500": "#3b82f6", // Primary blue
-					"600": "#2563eb",
-					"700": "#1d4ed8",
-					"800": "#1e40af",
-					"900": "#1e3a8a",
-					"950": "#172554",
-				},
-				dark: {
-					"900": "#121212", // Almost black
-					"800": "#1e1e1e",
-					"700": "#2d2d2d",
-					"600": "#3d3d3d",
+				// Custom brand colors
+				brand: {
+					primary: "#cb9b32",
+					secondary: "#6b5420",
+					tertiary: "#d1c8a9",
 				},
 			},
 			borderRadius: {
@@ -137,9 +123,8 @@ export default {
 				'float': 'float 6s ease-in-out infinite'
 			},
 			backgroundImage: {
-				'hero-gradient': 'linear-gradient(90deg, hsla(217, 91%, 70%, 1) 0%, hsla(241, 91%, 68%, 1) 100%)',
-				'hero-gradient-2': 'linear-gradient(90deg, hsla(220, 100%, 77%, 1) 0%, hsla(217, 90%, 57%, 1) 100%)',
-				'pakistan-gradient': 'linear-gradient(180deg, rgba(59,130,246,0.8) 0%, rgba(59,130,246,0) 100%)',
+				'brand-gradient': 'linear-gradient(135deg, #cb9b32 0%, #6b5420 100%)',
+				'brand-gradient-soft': 'linear-gradient(180deg, #d1c8a9 0%, #ffffff 100%)',
 			},
 			fontFamily: {
 				'sans': ['Inter', 'sans-serif'],

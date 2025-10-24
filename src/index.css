@@ -138,8 +138,8 @@
     background-position: center;
   }
 
-  .pakistan-chip {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-pakistan-100 text-pakistan-600 border border-pakistan-200;
+  .brand-chip {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-muted text-secondary border border-border;
   }
   
   .section-container {
@@ -147,15 +147,15 @@
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold tracking-tight;
+    @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold tracking-tight text-foreground;
   }
 
   .section-subtitle {
-    @apply text-lg md:text-xl text-gray-600 mt-4 max-w-3xl;
+    @apply text-lg md:text-xl text-muted-foreground mt-4 max-w-3xl;
   }
 
   .glass-card {
-    @apply bg-white/70 backdrop-blur-sm border border-white/20 rounded-2xl shadow-elegant transition-all duration-300 hover:shadow-elegant-hover;
+    @apply bg-card/70 backdrop-blur-sm border border-border rounded-2xl shadow-elegant transition-all duration-300 hover:shadow-elegant-hover;
   }
 
   .feature-card {
@@ -163,15 +163,15 @@
   }
   
   .button-primary {
-    @apply bg-pakistan-500 hover:bg-pakistan-600 text-white font-medium py-3 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98];
+    @apply bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-3 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98];
   }
 
   .button-secondary {
-    @apply bg-transparent border border-gray-300 hover:border-pakistan-500 text-gray-800 hover:text-pakistan-500 font-medium py-3 px-6 rounded-full transition-all duration-300;
+    @apply bg-transparent border-2 border-border hover:border-primary text-foreground hover:text-primary font-medium py-3 px-6 rounded-full transition-all duration-300;
   }
   
   .nav-link {
-    @apply relative text-gray-800 hover:text-pakistan-500 py-2 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-pakistan-500 after:transition-all hover:after:w-full;
+    @apply relative text-foreground hover:text-primary py-2 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all hover:after:w-full;
   }
 }
 

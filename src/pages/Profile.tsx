@@ -7,7 +7,7 @@ const Profile = () => {
   const [profileData, setProfileData] = useState({
     name: 'Ahmed Khan',
     title: 'Digital Marketing Expert',
-    location: 'Karachi, Pakistan',
+    location: 'Global',
     bio: 'Passionate digital marketer with 8+ years of experience helping businesses grow online. Specialized in social media marketing, content strategy, and paid advertising.',
     email: 'ahmed.khan@example.com',
     website: 'www.ahmedkhan.com',
@@ -54,7 +54,7 @@ const Profile = () => {
       <div className="section-container max-w-6xl">
         {/* Profile Header */}
         <div className="bg-white rounded-xl shadow-elegant overflow-hidden mb-8">
-          <div className="h-32 bg-gradient-to-r from-pakistan-500 to-pakistan-600"></div>
+          <div className="h-32 bg-gradient-to-r from-primary to-secondary"></div>
           <div className="relative px-6 pb-6">
             <div className="flex flex-col md:flex-row items-start md:items-end space-y-4 md:space-y-0 md:space-x-6">
               <div className="relative -mt-16">
@@ -63,7 +63,7 @@ const Profile = () => {
                   alt={profileData.name}
                   className="w-32 h-32 rounded-full border-4 border-white shadow-lg object-cover"
                 />
-                <button className="absolute bottom-2 right-2 w-8 h-8 bg-pakistan-500 text-white rounded-full flex items-center justify-center hover:bg-pakistan-600 transition-colors">
+                <button className="absolute bottom-2 right-2 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center hover:bg-primary/90 transition-colors">
                   <Camera className="w-4 h-4" />
                 </button>
               </div>
@@ -107,7 +107,7 @@ const Profile = () => {
               <div className="grid grid-cols-2 gap-4">
                 {stats.map((stat, index) => (
                   <div key={index} className="text-center">
-                    <p className="text-2xl font-bold text-pakistan-600">{stat.value}</p>
+                    <p className="text-2xl font-bold text-primary">{stat.value}</p>
                     <p className="text-sm text-gray-600">{stat.label}</p>
                   </div>
                 ))}
@@ -124,7 +124,7 @@ const Profile = () => {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Globe className="w-5 h-5 text-gray-400" />
-                  <a href={`https://${profileData.website}`} className="text-pakistan-500 hover:underline">
+                  <a href={`https://${profileData.website}`} className="text-primary hover:underline">
                     {profileData.website}
                   </a>
                 </div>
@@ -167,7 +167,7 @@ const Profile = () => {
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-xl font-bold text-gray-900">{product.price}</span>
-                        <button className="text-pakistan-500 hover:text-pakistan-600 font-medium">
+                        <button className="text-primary hover:text-primary/80 font-medium">
                           Manage
                         </button>
                       </div>
@@ -185,7 +185,7 @@ const Profile = () => {
                     { name: 'Hassan Ahmed', rating: 5, comment: 'Very practical and well-structured content.', product: 'Social Media Bundle', date: '1 week ago' },
                     { name: 'Fatima Khan', rating: 4, comment: 'Good content, would recommend to others.', product: 'Content Strategy Toolkit', date: '2 weeks ago' }
                   ].map((review, index) => (
-                    <div key={index} className="border-l-4 border-pakistan-500 pl-4 py-2">
+                    <div key={index} className="border-l-4 border-primary pl-4 py-2">
                       <div className="flex items-center justify-between mb-1">
                         <span className="font-medium text-gray-900">{review.name}</span>
                         <div className="flex items-center">

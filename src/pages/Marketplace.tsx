@@ -17,7 +17,7 @@ const ProductCard = ({ product }: { product: any }) => (
     
     <div className="p-6">
       <div className="flex items-center justify-between mb-2">
-        <span className="pakistan-chip text-xs">{product.category}</span>
+        <span className="brand-chip text-xs">{product.category}</span>
         <div className="flex items-center space-x-1">
           <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
           <span className="text-sm font-medium">{product.rating}</span>
@@ -131,7 +131,7 @@ const Marketplace = () => {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Marketplace</h1>
-          <p className="text-gray-600">Discover amazing digital products from Pakistani creators</p>
+          <p className="text-muted-foreground">Discover amazing digital products from creators worldwide</p>
         </div>
 
         {/* Search and Filters */}
