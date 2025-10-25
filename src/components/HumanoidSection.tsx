@@ -95,7 +95,7 @@ const HumanoidSection = () => {
               <div className="pulse-chip opacity-0 animate-fade-in" style={{
                 animationDelay: "0.1s"
               }}>
-                <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">02</span>
+                <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-brand-primary text-white mr-2">02</span>
                 <span>Humanoid</span>
               </div>
             </div>
@@ -117,7 +117,7 @@ const HumanoidSection = () => {
               }}
             >
               <div
-                className="absolute inset-0 z-0 bg-gradient-to-b from-pulse-900/40 to-dark-900/80"
+                className="absolute inset-0 z-0 bg-gradient-to-b from-brand-secondary/40 to-dark-900/80"
                 style={{
                   backgroundImage: "url('/background-section1.png')",
                   backgroundSize: "cover",
@@ -153,7 +153,7 @@ const HumanoidSection = () => {
               }}
             >
               <div
-                className="absolute inset-0 z-0 bg-gradient-to-b from-pulse-900/40 to-dark-900/80"
+                className="absolute inset-0 z-0 bg-gradient-to-b from-brand-secondary/40 to-dark-900/80"
                 style={{
                   backgroundImage: "url('/background-section2.png')",
                   backgroundSize: "cover",
@@ -189,7 +189,7 @@ const HumanoidSection = () => {
               }}
             >
               <div
-                className="absolute inset-0 z-0 bg-gradient-to-b from-pulse-900/40 to-dark-900/80"
+                className="absolute inset-0 z-0 bg-gradient-to-b from-brand-secondary/40 to-dark-900/80"
                 style={{
                   backgroundImage: "url('/background-section3.png')",
                   backgroundSize: "cover",

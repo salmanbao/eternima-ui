@@ -159,7 +159,7 @@ const DetailsSection = () => {
                     value={formData.fullName} 
                     onChange={handleChange} 
                     placeholder="Full name" 
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pulse-500 focus:border-transparent" 
+                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent" 
                     required 
                   />
                 </div>
@@ -171,7 +171,7 @@ const DetailsSection = () => {
                     value={formData.email} 
                     onChange={handleChange} 
                     placeholder="Email address" 
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pulse-500 focus:border-transparent" 
+                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent" 
                     required 
                   />
                 </div>
@@ -183,14 +183,14 @@ const DetailsSection = () => {
                     value={formData.company} 
                     onChange={handleChange} 
                     placeholder="Company (optional)" 
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pulse-500 focus:border-transparent" 
+                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent" 
                   />
                 </div>
                 
                 <div>
                   <button 
                     type="submit" 
-                    className="w-full px-6 py-3 bg-pulse-500 hover:bg-pulse-600 text-white font-medium rounded-full transition-colors duration-300"
+                    className="w-full px-6 py-3 bg-brand-primary hover:bg-brand-primary/90 text-white font-medium rounded-full transition-colors duration-300"
                   >
                     Request access
                   </button>

@@ -45,9 +45,9 @@ const FAQ = () => {
             <AccordionItem 
               key={index} 
               value={`item-${index}`}
-              className="border border-pulse-200 rounded-lg px-6 bg-white hover:shadow-md transition-shadow"
+              className="border border-brand-tertiary rounded-lg px-6 bg-white hover:shadow-md transition-shadow"
             >
-              <AccordionTrigger className="text-left text-base sm:text-lg font-semibold text-gray-900 hover:text-pulse-600 py-4">
+              <AccordionTrigger className="text-left text-base sm:text-lg font-semibold text-gray-900 hover:text-brand-primary py-4">
                 {faq.question}
               </AccordionTrigger>
               <AccordionContent className="text-gray-700 text-sm sm:text-base pb-4">
@@ -58,7 +58,7 @@ const FAQ = () => {
         </Accordion>
 
         <div className="text-center mt-8">
-          <a href="#" className="text-pulse-600 hover:text-pulse-700 font-semibold">
+          <a href="#" className="text-brand-primary hover:text-brand-primary/80 font-semibold">
             More questions? → View full FAQ page
           </a>
         </div>

@@ -16,7 +16,7 @@ const StepCard = ({ number, title, description, isActive, onClick }: StepCardPro
       className={cn(
         "rounded-xl p-6 cursor-pointer transition-all duration-500 border",
         isActive 
-          ? "bg-white shadow-elegant border-pulse-200" 
+          ? "bg-white shadow-elegant border-brand-tertiary" 
           : "bg-white/50 hover:bg-white/80 border-transparent"
       )}
       onClick={onClick}
@@ -24,14 +24,14 @@ const StepCard = ({ number, title, description, isActive, onClick }: StepCardPro
       <div className="flex items-start">
         <div className={cn(
           "flex items-center justify-center rounded-full w-10 h-10 mr-4 flex-shrink-0 transition-colors duration-300",
-          isActive ? "bg-pulse-500 text-white" : "bg-gray-100 text-gray-500"
+          isActive ? "bg-brand-primary text-white" : "bg-gray-100 text-gray-500"
         )}>
           {number}
         </div>
         <div>
           <h3 className={cn(
             "text-lg font-semibold mb-2 transition-colors duration-300",
-            isActive ? "text-pulse-600" : "text-gray-800"
+            isActive ? "text-brand-primary" : "text-gray-800"
           )}>
             {title}
           </h3>
@@ -110,8 +110,8 @@ const HowItWorks = () => {
   return (
     <section className="py-20 bg-white relative" id="how-it-works" ref={sectionRef}>
       {/* Background decorative elements */}
-      <div className="absolute -top-20 right-0 w-72 h-72 bg-pulse-50 rounded-full opacity-60 blur-3xl -z-10"></div>
-      <div className="absolute bottom-0 left-10 w-64 h-64 bg-gray-50 rounded-full opacity-70 blur-3xl -z-10"></div>
+      <div className="absolute -top-20 right-0 w-72 h-72 bg-brand-tertiary/30 rounded-full opacity-60 blur-3xl -z-10"></div>
+      <div className="absolute bottom-0 left-10 w-64 h-64 bg-brand-tertiary/20 rounded-full opacity-70 blur-3xl -z-10"></div>
       
       <div className="section-container">
         <div className="text-center mb-16 opacity-0 fade-in-stagger">
@@ -151,7 +151,7 @@ const HowItWorks = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-900/70 to-transparent">
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <span className="text-pulse-400 font-medium mb-2 block">{step.number}</span>
+                    <span className="text-brand-primary font-medium mb-2 block">{step.number}</span>
                     <h3 className="text-2xl font-semibold mb-2">{step.title}</h3>
                     <p className="text-white/80">{step.description}</p>
                   </div>
@@ -162,10 +162,10 @@ const HowItWorks = () => {
         </div>
         
         <div className="text-center mt-12">
-          <button className="px-8 py-4 bg-pulse-600 hover:bg-pulse-700 text-white rounded-lg font-semibold transition-colors mr-4 mb-4 sm:mb-0">
+          <button className="px-8 py-4 bg-brand-primary hover:bg-brand-primary/90 text-white rounded-lg font-semibold transition-colors mr-4 mb-4 sm:mb-0">
             Start a reflection
           </button>
-          <button className="px-8 py-4 border-2 border-pulse-600 text-pulse-600 hover:bg-pulse-50 rounded-lg font-semibold transition-colors">
+          <button className="px-8 py-4 border-2 border-brand-primary text-brand-primary hover:bg-brand-primary/10 rounded-lg font-semibold transition-colors">
             Request demo for hardware
           </button>
         </div>

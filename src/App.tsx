@@ -9,6 +9,12 @@ import Marketplace from "./pages/Marketplace";
 import CreateProduct from "./pages/CreateProduct";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
+import FeaturesPage from "./pages/FeaturesPage";
+import PricingPage from "./pages/PricingPage";
+import AboutPage from "./pages/AboutPage";
+import ContactPage from "./pages/ContactPage";
+import PrivacySecurityPage from "./pages/PrivacySecurityPage";
+import FAQPage from "./pages/FAQPage";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +26,12 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/features" element={<FeaturesPage />} />
+          <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/privacy" element={<PrivacySecurityPage />} />
+          <Route path="/faq" element={<FAQPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/marketplace" element={<Marketplace />} />
           <Route path="/create" element={<CreateProduct />} />

@@ -103,7 +103,7 @@ const Hero = () => {
               className="section-title text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight opacity-0 animate-fade-in" 
               style={{ animationDelay: "0.1s" }}
             >
-              <span className="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-pulse-600 via-pulse-500 to-accent-500">
+              <span className="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-brand-primary via-brand-primary to-accent">
                 Eternima
               </span>
               {" "}—{" "}
@@ -144,7 +144,7 @@ const Hero = () => {
               </a>
               <a 
                 href="#how-it-works" 
-                className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-pulse-600 text-pulse-600 hover:bg-pulse-50 rounded-lg font-semibold transition-colors flex items-center justify-center w-full sm:w-auto text-center"
+                className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-brand-primary text-brand-primary hover:bg-brand-primary/10 rounded-lg font-semibold transition-colors flex items-center justify-center w-full sm:w-auto text-center"
               >
                 How it works
               </a>
@@ -180,7 +180,7 @@ const Hero = () => {
         </div>
       </div>
       
-      <div className="hidden lg:block absolute bottom-0 left-1/4 w-64 h-64 bg-pulse-100/30 rounded-full blur-3xl -z-10 parallax" data-speed="0.05"></div>
+      <div className="hidden lg:block absolute bottom-0 left-1/4 w-64 h-64 bg-brand-tertiary/30 rounded-full blur-3xl -z-10 parallax" data-speed="0.05"></div>
     </section>
   );
 };

@@ -8,13 +8,13 @@ interface ProductCardProps {
 
 const ProductCard = ({ title, description, features }: ProductCardProps) => {
   return (
-    <div className="p-6 sm:p-8 rounded-2xl bg-white border border-pulse-200 hover:shadow-elegant transition-all duration-300 animate-on-scroll">
-      <h3 className="text-xl sm:text-2xl font-display font-semibold mb-3 text-pulse-600">{title}</h3>
+    <div className="p-6 sm:p-8 rounded-2xl bg-white border border-brand-tertiary hover:shadow-elegant transition-all duration-300 animate-on-scroll">
+      <h3 className="text-xl sm:text-2xl font-display font-semibold mb-3 text-brand-primary">{title}</h3>
       <p className="text-gray-700 mb-4 text-sm sm:text-base">{description}</p>
       <ul className="space-y-2">
         {features.map((feature, index) => (
           <li key={index} className="text-gray-600 text-sm flex items-start">
-            <span className="text-pulse-500 mr-2">•</span>
+            <span className="text-brand-primary mr-2">•</span>
             <span>{feature}</span>
           </li>
         ))}
@@ -64,7 +64,7 @@ const ProductSpotlight = () => {
   ];
 
   return (
-    <section className="w-full py-12 sm:py-20 bg-gradient-to-b from-white to-pulse-50" id="products">
+    <section className="w-full py-12 sm:py-20 bg-gradient-to-b from-white to-brand-tertiary/20" id="products">
       <div className="section-container">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-4">Product Spotlight</h2>
@@ -80,7 +80,7 @@ const ProductSpotlight = () => {
         </div>
 
         <div className="text-center">
-          <button className="px-8 py-4 bg-pulse-600 hover:bg-pulse-700 text-white rounded-lg font-semibold transition-colors">
+          <button className="px-8 py-4 bg-brand-primary hover:bg-brand-primary/90 text-white rounded-lg font-semibold transition-colors">
             Compare plans & devices
           </button>
         </div>
