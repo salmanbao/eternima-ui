@@ -47,19 +47,13 @@ const Navbar = () => {
     >
       <div className="container flex items-center justify-between px-4 sm:px-6 lg:px-8">
         <a 
-          href="#" 
+          href="/" 
           className="flex items-center space-x-2"
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToTop();
-          }}
-          aria-label="Pulse Robot"
+          aria-label="Eternima"
         >
-          <img 
-            src="/logo.svg" 
-            alt="Pulse Robot Logo" 
-            className="h-7 sm:h-8" 
-          />
+          <span className="text-2xl sm:text-3xl font-display font-bold text-gray-900 tracking-tight">
+            Eternima
+          </span>
         </a>
 
         {/* Desktop Navigation */}

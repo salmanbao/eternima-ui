@@ -1,9 +1,266 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PageFX from "@/components/PageFX";
+import { ENABLE_ANIME_GLOBAL, ENABLE_ANIME_PRIVACY_PAGE, ENABLE_FX_GRID, ENABLE_FX_STREAMS, ENABLE_FX_PARTICLES } from "@/lib/featureFlags";
 import { Shield, Lock, Key, FileCheck, Eye, HardDrive, UserCheck, Clock } from "lucide-react";
 
 const PrivacySecurityPage = () => {
+  useEffect(() => {
+    if (!ENABLE_ANIME_GLOBAL || !ENABLE_ANIME_PRIVACY_PAGE) return;
+
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    // Mobile detection
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) return;
+
+    // Dynamically import anime
+    import('animejs').then((animeModule) => {
+      const anime = (animeModule as any).default || animeModule;
+      
+      // Check if anime is v4 or v3
+      const isV4 = typeof anime === 'function' && anime.timeline !== undefined;
+
+      // Create floating particles for hero section
+      const heroSection = document.querySelector('.privacy-hero-particles');
+      if (heroSection) {
+        for (let i = 0; i < 40; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'hero-particle';
+          particle.style.cssText = `
+            position: absolute;
+            width: ${3 + Math.random() * 4}px;
+            height: ${3 + Math.random() * 4}px;
+            background: rgba(203, 155, 50, ${0.3 + Math.random() * 0.4});
+            border-radius: 50%;
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+            pointer-events: none;
+            z-index: 1;
+          `;
+          heroSection.appendChild(particle);
+
+          if (isV4) {
+            anime({
+              targets: particle,
+              translateY: [0, -100 - Math.random() * 100],
+              translateX: [-30 + Math.random() * 60, -30 + Math.random() * 60],
+              opacity: [0, 0.6, 0],
+              duration: 8000 + Math.random() * 4000,
+              easing: 'linear',
+              loop: true,
+              delay: Math.random() * 5000
+            });
+          } else {
+            anime({
+              targets: particle,
+              translateY: [0, -100 - Math.random() * 100],
+              translateX: [-30 + Math.random() * 60, -30 + Math.random() * 60],
+              opacity: [0, 0.6, 0],
+              duration: 8000 + Math.random() * 4000,
+              easing: 'linear',
+              loop: true,
+              delay: Math.random() * 5000
+            });
+          }
+        }
+      }
+
+      // Animate security feature cards with stagger
+      const securityCards = document.querySelectorAll('.security-feature-card');
+      if (securityCards.length > 0) {
+        if (isV4) {
+          anime({
+            targets: securityCards,
+            opacity: [0, 1],
+            translateY: [40, 0],
+            duration: 800,
+            delay: (el, i) => i * 100,
+            easing: 'easeOutQuad'
+          });
+        } else {
+          anime({
+            targets: securityCards,
+            opacity: [0, 1],
+            translateY: [40, 0],
+            duration: 800,
+            delay: anime.stagger(100),
+            easing: 'easeOutQuad'
+          });
+        }
+      }
+
+      // Animate privacy principle cards with stagger
+      const principleCards = document.querySelectorAll('.privacy-principle-card');
+      if (principleCards.length > 0) {
+        if (isV4) {
+          anime({
+            targets: principleCards,
+            opacity: [0, 1],
+            translateY: [40, 0],
+            duration: 800,
+            delay: (el, i) => i * 120,
+            easing: 'easeOutQuad'
+          });
+        } else {
+          anime({
+            targets: principleCards,
+            opacity: [0, 1],
+            translateY: [40, 0],
+            duration: 800,
+            delay: anime.stagger(120),
+            easing: 'easeOutQuad'
+          });
+        }
+      }
+
+      // Animate inheritance feature cards with stagger
+      const inheritanceCards = document.querySelectorAll('.inheritance-feature-card');
+      if (inheritanceCards.length > 0) {
+        if (isV4) {
+          anime({
+            targets: inheritanceCards,
+            opacity: [0, 1],
+            translateY: [40, 0],
+            duration: 800,
+            delay: (el, i) => i * 120,
+            easing: 'easeOutQuad'
+          });
+        } else {
+          anime({
+            targets: inheritanceCards,
+            opacity: [0, 1],
+            translateY: [40, 0],
+            duration: 800,
+            delay: anime.stagger(120),
+            easing: 'easeOutQuad'
+          });
+        }
+      }
+
+      // Animate inheritance use case box
+      const useCaseBox = document.querySelector('.inheritance-use-case');
+      if (useCaseBox) {
+        if (isV4) {
+          anime({
+            targets: useCaseBox,
+            opacity: [0, 1],
+            translateY: [40, 0],
+            duration: 1000,
+            delay: 400,
+            easing: 'easeOutQuad'
+          });
+        } else {
+          anime({
+            targets: useCaseBox,
+            opacity: [0, 1],
+            translateY: [40, 0],
+            duration: 1000,
+            delay: 400,
+            easing: 'easeOutQuad'
+          });
+        }
+      }
+
+      // Animate technical specs sections with stagger
+      const techSections = document.querySelectorAll('.tech-spec-section');
+      if (techSections.length > 0) {
+        if (isV4) {
+          anime({
+            targets: techSections,
+            opacity: [0, 1],
+            translateY: [30, 0],
+            duration: 700,
+            delay: (el, i) => i * 100,
+            easing: 'easeOutQuad'
+          });
+        } else {
+          anime({
+            targets: techSections,
+            opacity: [0, 1],
+            translateY: [30, 0],
+            duration: 700,
+            delay: anime.stagger(100),
+            easing: 'easeOutQuad'
+          });
+        }
+      }
+
+      // 3D tilt effect for security feature cards
+      const handleSecurityCardTilt = (e: MouseEvent) => {
+        const card = e.currentTarget as HTMLElement;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 10;
+        const rotateY = (centerX - x) / 10;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px) scale(1.02)`;
+      };
+
+      const handleSecurityCardLeave = (e: MouseEvent) => {
+        const card = e.currentTarget as HTMLElement;
+        card.style.transform = '';
+      };
+
+      securityCards.forEach((card) => {
+        card.addEventListener('mouseenter', handleSecurityCardTilt as EventListener);
+        card.addEventListener('mousemove', handleSecurityCardTilt as EventListener);
+        card.addEventListener('mouseleave', handleSecurityCardLeave as EventListener);
+      });
+
+      // 3D tilt effect for inheritance cards
+      const handleInheritanceCardTilt = (e: MouseEvent) => {
+        const card = e.currentTarget as HTMLElement;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 10;
+        const rotateY = (centerX - x) / 10;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px) scale(1.02)`;
+      };
+
+      const handleInheritanceCardLeave = (e: MouseEvent) => {
+        const card = e.currentTarget as HTMLElement;
+        card.style.transform = '';
+      };
+
+      inheritanceCards.forEach((card) => {
+        card.addEventListener('mouseenter', handleInheritanceCardTilt as EventListener);
+        card.addEventListener('mousemove', handleInheritanceCardTilt as EventListener);
+        card.addEventListener('mouseleave', handleInheritanceCardLeave as EventListener);
+      });
+
+      // Cleanup
+      return () => {
+        // Remove particles
+        const particles = document.querySelectorAll('.hero-particle');
+        particles.forEach(p => p.remove());
+
+        // Remove event listeners
+        securityCards.forEach((card) => {
+          card.removeEventListener('mouseenter', handleSecurityCardTilt as EventListener);
+          card.removeEventListener('mousemove', handleSecurityCardTilt as EventListener);
+          card.removeEventListener('mouseleave', handleSecurityCardLeave as EventListener);
+        });
+
+        inheritanceCards.forEach((card) => {
+          card.removeEventListener('mouseenter', handleInheritanceCardTilt as EventListener);
+          card.removeEventListener('mousemove', handleInheritanceCardTilt as EventListener);
+          card.removeEventListener('mouseleave', handleInheritanceCardLeave as EventListener);
+        });
+      };
+    });
+  }, []);
+
   const securityFeatures = [
     {
       icon: <Lock className="w-6 h-6" />,
@@ -79,10 +336,12 @@ const PrivacySecurityPage = () => {
       <Navbar />
       
       <main>
+        {ENABLE_ANIME_GLOBAL && ENABLE_ANIME_PRIVACY_PAGE ? (
+          <PageFX showGrid={ENABLE_FX_GRID} showHex={false} showParticles={ENABLE_FX_PARTICLES} intensity="low" showStreams={ENABLE_FX_STREAMS} showScanline={false} showCursorTrail={false}>
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-b from-brand-secondary to-brand-secondary/80">
-          <div className="section-container text-center">
-            <div className="w-16 h-16 bg-brand-primary rounded-2xl flex items-center justify-center mx-auto mb-6">
+        <section className="privacy-hero-particles relative overflow-hidden py-20 bg-gradient-to-b from-brand-secondary to-brand-secondary/80">
+          <div className="section-container text-center relative z-10">
+            <div className="w-16 h-16 bg-brand-primary rounded-2xl flex items-center justify-center mx-auto mb-6 group hover:scale-110 hover:rotate-3 transition-all duration-300">
               <Shield className="w-8 h-8 text-white" />
             </div>
             <h1 className="section-title text-white mb-6">
@@ -110,17 +369,21 @@ const PrivacySecurityPage = () => {
               {securityFeatures.map((feature, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl border border-brand-tertiary p-6 hover:shadow-elegant transition-shadow"
+                  className="security-feature-card group bg-white rounded-2xl border-2 border-brand-tertiary/60 p-6 hover:shadow-elegant transition-all duration-300 relative overflow-hidden"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary mb-4">
-                    {feature.icon}
+                  <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-brand-primary/10 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="relative z-10">
+                    <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                      {feature.icon}
+                    </div>
+                    <h3 className="text-xl font-display font-bold mb-3 group-hover:text-brand-primary transition-colors duration-300">
+                      {feature.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {feature.description}
+                    </p>
                   </div>
-                  <h3 className="text-xl font-display font-bold mb-3">
-                    {feature.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {feature.description}
-                  </p>
                 </div>
               ))}
             </div>
@@ -141,14 +404,18 @@ const PrivacySecurityPage = () => {
               {privacyPrinciples.map((principle, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl border border-brand-tertiary p-8 hover:shadow-elegant transition-shadow"
+                  className="privacy-principle-card bg-white rounded-2xl border-2 border-brand-tertiary/60 p-8 hover:shadow-elegant hover:border-brand-primary/40 transition-all duration-300 relative overflow-hidden group"
                 >
-                  <h3 className="text-2xl font-display font-bold mb-3">
-                    {principle.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed text-lg">
-                    {principle.description}
-                  </p>
+                  <div className="absolute inset-0 bg-gradient-to-r from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-0 right-0 w-32 h-32 bg-brand-primary/5 rounded-tl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="relative z-10">
+                    <h3 className="text-2xl font-display font-bold mb-3 group-hover:text-brand-primary transition-colors duration-300">
+                      {principle.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed text-lg">
+                      {principle.description}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -169,45 +436,53 @@ const PrivacySecurityPage = () => {
               {inheritanceFeatures.map((feature, index) => (
                 <div
                   key={index}
-                  className="bg-brand-tertiary/20 rounded-2xl border border-brand-tertiary p-6"
+                  className="inheritance-feature-card group bg-brand-tertiary/20 rounded-2xl border-2 border-brand-tertiary/60 p-6 hover:shadow-elegant transition-all duration-300 relative overflow-hidden"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-brand-primary flex items-center justify-center text-white mb-4">
-                    {feature.icon}
+                  <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 border-brand-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-brand-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="relative z-10">
+                    <div className="w-12 h-12 rounded-xl bg-brand-primary flex items-center justify-center text-white mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-md">
+                      {feature.icon}
+                    </div>
+                    <h3 className="text-xl font-display font-bold mb-3 group-hover:text-brand-primary transition-colors duration-300">
+                      {feature.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {feature.description}
+                    </p>
                   </div>
-                  <h3 className="text-xl font-display font-bold mb-3">
-                    {feature.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {feature.description}
-                  </p>
                 </div>
               ))}
             </div>
 
             {/* Inheritance Use Case */}
-            <div className="max-w-4xl mx-auto bg-brand-secondary text-white rounded-3xl p-8 sm:p-12">
-              <h3 className="text-2xl font-display font-bold mb-4">
-                How Inheritance Works: An Example
-              </h3>
-              <div className="space-y-4 text-white/90">
-                <p className="leading-relaxed">
-                  <span className="font-bold text-brand-primary">Sarah</span> sets up a 
-                  90-day check-in. She splits her decryption key among three people: 
-                  her daughter Emma (40%), her brother Tom (30%), and her best friend Lisa (30%).
-                </p>
-                <p className="leading-relaxed">
-                  Each quarter, Sarah confirms she's okay via biometric login. If she doesn't respond 
-                  after 3 failed attempts, Emma, Tom, and Lisa receive encrypted key fragments.
-                </p>
-                <p className="leading-relaxed">
-                  <span className="font-bold">No single person can access her data alone.</span> Emma's 
-                  40% + Tom's 30% = 70% of the key (threshold met). Together, they decrypt Sarah's 
-                  LuxVault Capsule™ and access her voice messages, photos, and final reflections.
-                </p>
-                <p className="leading-relaxed">
-                  Lisa receives access only to Sarah's "Friends" collection—memories Sarah specifically 
-                  chose to share with her close circle.
-                </p>
+            <div className="inheritance-use-case max-w-4xl mx-auto bg-brand-secondary text-white rounded-3xl p-8 sm:p-12 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative z-10">
+                <h3 className="text-2xl font-display font-bold mb-4">
+                  How Inheritance Works: An Example
+                </h3>
+                <div className="space-y-4 text-white/90">
+                  <p className="leading-relaxed">
+                    <span className="font-bold text-brand-primary">Sarah</span> sets up a 
+                    90-day check-in. She splits her decryption key among three people: 
+                    her daughter Emma (40%), her brother Tom (30%), and her best friend Lisa (30%).
+                  </p>
+                  <p className="leading-relaxed">
+                    Each quarter, Sarah confirms she's okay via biometric login. If she doesn't respond 
+                    after 3 failed attempts, Emma, Tom, and Lisa receive encrypted key fragments.
+                  </p>
+                  <p className="leading-relaxed">
+                    <span className="font-bold">No single person can access her data alone.</span> Emma's 
+                    40% + Tom's 30% = 70% of the key (threshold met). Together, they decrypt Sarah's 
+                    LuxVault Capsule™ and access her voice messages, photos, and final reflections.
+                  </p>
+                  <p className="leading-relaxed">
+                    Lisa receives access only to Sarah's "Friends" collection—memories Sarah specifically 
+                    chose to share with her close circle.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -223,11 +498,11 @@ const PrivacySecurityPage = () => {
               For the security-conscious: here's exactly how we protect your data.
             </p>
 
-            <div className="max-w-4xl mx-auto bg-white rounded-3xl border border-brand-tertiary p-8 sm:p-12">
+            <div className="max-w-4xl mx-auto bg-white rounded-3xl border-2 border-brand-tertiary/60 p-8 sm:p-12 hover:shadow-elegant transition-shadow duration-300">
               <div className="space-y-8">
-                <div>
-                  <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
-                    <Lock className="w-5 h-5 text-brand-primary" />
+                <div className="tech-spec-section">
+                  <h3 className="text-xl font-bold mb-3 flex items-center gap-2 group">
+                    <Lock className="w-5 h-5 text-brand-primary group-hover:scale-110 transition-transform duration-300" />
                     Encryption Standards
                   </h3>
                   <ul className="space-y-2 text-muted-foreground ml-7">
@@ -238,9 +513,9 @@ const PrivacySecurityPage = () => {
                   </ul>
                 </div>
 
-                <div>
-                  <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
-                    <HardDrive className="w-5 h-5 text-brand-primary" />
+                <div className="tech-spec-section">
+                  <h3 className="text-xl font-bold mb-3 flex items-center gap-2 group">
+                    <HardDrive className="w-5 h-5 text-brand-primary group-hover:scale-110 transition-transform duration-300" />
                     Data Storage
                   </h3>
                   <ul className="space-y-2 text-muted-foreground ml-7">
@@ -251,9 +526,9 @@ const PrivacySecurityPage = () => {
                   </ul>
                 </div>
 
-                <div>
-                  <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
-                    <FileCheck className="w-5 h-5 text-brand-primary" />
+                <div className="tech-spec-section">
+                  <h3 className="text-xl font-bold mb-3 flex items-center gap-2 group">
+                    <FileCheck className="w-5 h-5 text-brand-primary group-hover:scale-110 transition-transform duration-300" />
                     Compliance & Audits
                   </h3>
                   <ul className="space-y-2 text-muted-foreground ml-7">
@@ -264,9 +539,9 @@ const PrivacySecurityPage = () => {
                   </ul>
                 </div>
 
-                <div>
-                  <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
-                    <Eye className="w-5 h-5 text-brand-primary" />
+                <div className="tech-spec-section">
+                  <h3 className="text-xl font-bold mb-3 flex items-center gap-2 group">
+                    <Eye className="w-5 h-5 text-brand-primary group-hover:scale-110 transition-transform duration-300" />
                     Open Source Components
                   </h3>
                   <ul className="space-y-2 text-muted-foreground ml-7">
@@ -293,19 +568,28 @@ const PrivacySecurityPage = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/terms"
-                className="px-8 py-4 bg-brand-primary hover:bg-brand-primary/90 text-white rounded-xl font-semibold transition-colors inline-block"
+                className="px-8 py-4 bg-brand-primary hover:bg-brand-primary/90 text-white rounded-xl font-semibold transition-all duration-300 inline-block hover:scale-105 hover:shadow-xl relative overflow-hidden group"
               >
-                Read Full Privacy Policy
+                <span className="relative z-10">Read Full Privacy Policy</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
               </a>
               <a
                 href="/contact"
-                className="px-8 py-4 bg-white hover:bg-gray-50 border-2 border-brand-primary text-brand-primary rounded-xl font-semibold transition-colors inline-block"
+                className="px-8 py-4 bg-white hover:bg-gray-50 border-2 border-brand-primary text-brand-primary rounded-xl font-semibold transition-all duration-300 inline-block hover:scale-105 hover:shadow-lg"
               >
                 Contact Security Team
               </a>
             </div>
           </div>
         </section>
+          </PageFX>
+        ) : (
+          <section className="py-20 bg-gradient-to-b from-brand-secondary to-brand-secondary/80">
+            <div className="section-container text-center">
+              <h1 className="section-title text-white mb-6">Privacy & Security</h1>
+            </div>
+          </section>
+        )}
       </main>
 
       <Footer />

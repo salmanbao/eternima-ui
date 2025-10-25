@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PageFX from "@/components/PageFX";
+import { ENABLE_ANIME_GLOBAL, ENABLE_ANIME_FAQ_PAGE, ENABLE_FX_GRID, ENABLE_FX_PARTICLES } from "@/lib/featureFlags";
 import { ChevronDown, Search, HelpCircle } from "lucide-react";
 
 interface FAQItem {
@@ -215,6 +217,8 @@ const FAQPage = () => {
       <Navbar />
       
       <main>
+        {ENABLE_ANIME_GLOBAL && ENABLE_ANIME_FAQ_PAGE ? (
+          <PageFX showGrid={ENABLE_FX_GRID} showHex={false} showParticles={ENABLE_FX_PARTICLES} intensity="low" showStreams={false} showScanline={false} showCursorTrail={false}>
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-b from-brand-secondary to-brand-secondary/80">
           <div className="section-container text-center">
@@ -350,6 +354,17 @@ const FAQPage = () => {
             </div>
           </div>
         </section>
+          </PageFX>
+        ) : (
+          <>
+        {/* Hero Section - Fallback */}
+        <section className="py-20 bg-gradient-to-b from-brand-secondary to-brand-secondary/80">
+          <div className="section-container text-center">
+            <h1 className="section-title text-white mb-6">Frequently Asked Questions</h1>
+          </div>
+        </section>
+          </>
+        )}
       </main>
 
       <Footer />

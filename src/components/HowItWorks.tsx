@@ -14,17 +14,17 @@ const StepCard = ({ number, title, description, isActive, onClick }: StepCardPro
   return (
     <div 
       className={cn(
-        "rounded-xl p-6 cursor-pointer transition-all duration-500 border",
+        "rounded-xl p-6 cursor-pointer transition-all duration-500 border transform",
         isActive 
-          ? "bg-white shadow-elegant border-brand-tertiary" 
-          : "bg-white/50 hover:bg-white/80 border-transparent"
+          ? "bg-white shadow-elegant border-brand-tertiary scale-105" 
+          : "bg-white/50 hover:bg-white/80 border-transparent hover:scale-102"
       )}
       onClick={onClick}
     >
       <div className="flex items-start">
         <div className={cn(
-          "flex items-center justify-center rounded-full w-10 h-10 mr-4 flex-shrink-0 transition-colors duration-300",
-          isActive ? "bg-brand-primary text-white" : "bg-gray-100 text-gray-500"
+          "flex items-center justify-center rounded-full w-10 h-10 mr-4 flex-shrink-0 transition-all duration-300",
+          isActive ? "bg-brand-primary text-white animate-pulse-glow" : "bg-gray-100 text-gray-500"
         )}>
           {number}
         </div>

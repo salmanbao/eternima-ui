@@ -11,6 +11,9 @@ import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
+import BackToTop from "@/components/BackToTop";
+import PageFX from "@/components/PageFX";
+import { ENABLE_ANIME_GLOBAL, ENABLE_ANIME_INDEX_PAGE, ENABLE_FX_GRID, ENABLE_FX_PARTICLES, ENABLE_FX_STREAMS, ENABLE_FX_CURSORTRAIL } from "@/lib/featureFlags";
 
 const Index = () => {
   // Initialize intersection observer to detect when elements enter viewport
@@ -62,17 +65,42 @@ const Index = () => {
     <div className="min-h-screen">
       <Navbar />
       <main className="space-y-4 sm:space-y-8">
-        <Hero />
-        <Features />
-        <HowItWorks />
-        <ProductSpotlight />
-        <WhyEternima />
-        <PrivacySecurity />
-        <Testimonials />
-        <FAQ />
-        <Newsletter />
+        {ENABLE_ANIME_GLOBAL && ENABLE_ANIME_INDEX_PAGE ? (
+          <PageFX 
+            showGrid={ENABLE_FX_GRID}
+            showHex={false}
+            showParticles={ENABLE_FX_PARTICLES}
+            intensity="med"
+            showStreams={ENABLE_FX_STREAMS}
+            showScanline={false}
+            showCursorTrail={ENABLE_FX_CURSORTRAIL}
+          >
+            <Hero />
+            <Features />
+            <HowItWorks />
+            <ProductSpotlight />
+            <WhyEternima />
+            <PrivacySecurity />
+            <Testimonials />
+            <FAQ />
+            <Newsletter />
+          </PageFX>
+        ) : (
+          <>
+            <Hero />
+            <Features />
+            <HowItWorks />
+            <ProductSpotlight />
+            <WhyEternima />
+            <PrivacySecurity />
+            <Testimonials />
+            <FAQ />
+            <Newsletter />
+          </>
+        )}
       </main>
       <Footer />
+      <BackToTop />
     </div>
   );
 };

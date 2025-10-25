@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { Search, Filter, Star, Heart, ShoppingCart } from 'lucide-react';
 import Navbar from '@/components/Navbar';
+import PageFX from '@/components/PageFX';
+import { 
+  ENABLE_ANIME_GLOBAL, 
+  ENABLE_ANIME_MARKETPLACE_PAGE,
+  ENABLE_FX_GRID,
+  ENABLE_FX_PARTICLES,
+  ENABLE_FX_STREAMS
+} from '@/lib/featureFlags';
 
 const ProductCard = ({ product }: { product: any }) => (
   <div className="bg-white rounded-xl shadow-elegant hover:shadow-elegant-hover transition-all duration-300 hover:-translate-y-1 overflow-hidden">
@@ -125,60 +133,126 @@ const Marketplace = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navbar />
-      <div className="section-container">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Marketplace</h1>
-          <p className="text-muted-foreground">Discover amazing digital products from creators worldwide</p>
-        </div>
+    <>
+      {ENABLE_ANIME_GLOBAL && ENABLE_ANIME_MARKETPLACE_PAGE ? (
+        <PageFX 
+          showGrid={ENABLE_FX_GRID}
+          showParticles={ENABLE_FX_PARTICLES}
+          showStreams={ENABLE_FX_STREAMS}
+          intensity="med"
+        >
+          <div className="min-h-screen bg-gray-50">
+            <Navbar />
+            <div className="section-container">
+              {/* Header */}
+              <div className="mb-8">
+                <h1 className="text-3xl font-bold text-gray-900 mb-2">Marketplace</h1>
+                <p className="text-muted-foreground">Discover amazing digital products from creators worldwide</p>
+              </div>
 
-        {/* Search and Filters */}
-        <div className="mb-8 space-y-4">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-            <input
-              type="text"
-              placeholder="Search products..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-pakistan-500 focus:border-transparent"
-            />
+              {/* Search and Filters */}
+              <div className="mb-8 space-y-4">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <input
+                    type="text"
+                    placeholder="Search products..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-pakistan-500 focus:border-transparent"
+                  />
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {categories.map((category) => (
+                    <button
+                      key={category.id}
+                      onClick={() => setSelectedCategory(category.id)}
+                      className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                        selectedCategory === category.id
+                          ? 'bg-pakistan-500 text-white'
+                          : 'bg-white text-gray-600 hover:bg-pakistan-50'
+                      }`}
+                    >
+                      {category.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Products Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredProducts.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
+
+              {/* Load More */}
+              <div className="text-center mt-12">
+                <button className="button-primary">
+                  Load More Products
+                </button>
+              </div>
+            </div>
           </div>
+        </PageFX>
+      ) : (
+        <div className="min-h-screen bg-gray-50">
+          <Navbar />
+          <div className="section-container">
+            {/* Header */}
+            <div className="mb-8">
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">Marketplace</h1>
+              <p className="text-muted-foreground">Discover amazing digital products from creators worldwide</p>
+            </div>
 
-          <div className="flex flex-wrap gap-2">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  selectedCategory === category.id
-                    ? 'bg-pakistan-500 text-white'
-                    : 'bg-white text-gray-600 hover:bg-pakistan-50'
-                }`}
-              >
-                {category.name}
+            {/* Search and Filters */}
+            <div className="mb-8 space-y-4">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <input
+                  type="text"
+                  placeholder="Search products..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-pakistan-500 focus:border-transparent"
+                />
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {categories.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => setSelectedCategory(category.id)}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                      selectedCategory === category.id
+                        ? 'bg-pakistan-500 text-white'
+                        : 'bg-white text-gray-600 hover:bg-pakistan-50'
+                    }`}
+                  >
+                    {category.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Products Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+
+            {/* Load More */}
+            <div className="text-center mt-12">
+              <button className="button-primary">
+                Load More Products
               </button>
-            ))}
+            </div>
           </div>
         </div>
-
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-
-        {/* Load More */}
-        <div className="text-center mt-12">
-          <button className="button-primary">
-            Load More Products
-          </button>
-        </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 

@@ -3,10 +3,13 @@ import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import LottieAnimation from "./LottieAnimation";
+import { ENABLE_ANIME_GLOBAL, ENABLE_ANIME_HERO } from "@/lib/featureFlags";
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
+  const sheenRef = useRef<HTMLSpanElement>(null);
+  const orbRef = useRef<HTMLSpanElement>(null);
   const [lottieData, setLottieData] = useState<any>(null);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -23,10 +26,28 @@ const Hero = () => {
   }, []);
 
   useEffect(() => {
+    // .lottie files are dotLottie format (ZIP archives), not plain JSON
+    // Skip loading or use a JSON alternative instead
+    // For now, silently skip to avoid console errors
     fetch('/loop-header.lottie')
-      .then(response => response.json())
-      .then(data => setLottieData(data))
-      .catch(error => console.error("Error loading Lottie animation:", error));
+      .then(response => {
+        // Check if response is JSON
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+          return response.json();
+        } else {
+          // .lottie files are binary ZIP format, not JSON
+          // Skip parsing and use null
+          return null;
+        }
+      })
+      .then(data => {
+        if (data) setLottieData(data);
+      })
+      .catch(error => {
+        // Silently handle error - .lottie format requires special loader
+        console.debug("Lottie animation not loaded (requires dotLottie player)");
+      });
   }, []);
 
   useEffect(() => {
@@ -63,6 +84,108 @@ const Hero = () => {
       if (container) {
         container.removeEventListener("mousemove", handleMouseMove);
         container.removeEventListener("mouseleave", handleMouseLeave);
+      }
+    };
+  }, [isMobile]);
+
+  // Anime.js: Hero sheen and orbit (feature-flagged, v4 compatible)
+  useEffect(() => {
+    if (!ENABLE_ANIME_GLOBAL || !ENABLE_ANIME_HERO) return;
+    if (typeof window === 'undefined') return;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+    if (isMobile) return;
+    let cleanupFns: Array<() => void> = [];
+
+    (async () => {
+      const mod: any = await import("animejs");
+      const isV4 = !!(mod?.animate || mod?.default?.animate);
+      const animateFn: any = isV4 ? (mod.animate || mod?.default?.animate) : (
+        (typeof mod === 'function' && mod) ||
+        (typeof mod?.default === 'function' && mod.default) ||
+        (typeof mod?.anime === 'function' && mod.anime) ||
+        (typeof mod?.default?.anime === 'function' && mod.default.anime)
+      );
+      const createTimeline: any = isV4 ? (mod.createTimeline || mod?.default?.createTimeline) : (animateFn && animateFn.timeline);
+      if (!animateFn) return;
+
+      // Sheen sweep
+      if (sheenRef.current) {
+        if (isV4 && createTimeline) {
+          const tl = createTimeline({ loop: true });
+          tl.add(sheenRef.current, {
+            x: [{ to: '240%', duration: 1800 }],
+            ease: 'inOutSine',
+          }).add(sheenRef.current, {
+            opacity: [{ to: 1, duration: 300 }, { to: 0, duration: 300 }],
+            ease: 'outSine',
+          }, '-=1200');
+          cleanupFns.push(() => { if (tl.pause) tl.pause(); });
+        } else if (createTimeline) {
+          const tl = createTimeline({ loop: true, autoplay: true });
+          tl.add({
+            targets: sheenRef.current,
+            translateX: ["-120%", "120%"],
+            duration: 1800,
+            easing: "easeInOutSine",
+          }).add({
+            targets: sheenRef.current,
+            opacity: [0, 1, 0],
+            duration: 600,
+            easing: "easeOutSine",
+            offset: "-=1200",
+          });
+          cleanupFns.push(() => { if (tl.pause) tl.pause(); });
+        }
+      }
+
+      // Orbit
+      if (orbRef.current) {
+        const state: { angle: number } = { angle: 0 };
+        if (isV4) {
+          const orbit = animateFn(state, {
+            angle: [{ to: 360, duration: 6000 }],
+            ease: 'linear',
+            loop: true,
+            onUpdate: () => {
+              if (!orbRef.current) return;
+              const a = (state.angle * Math.PI) / 180;
+              const r = 26;
+              const x = Math.cos(a) * r;
+              const y = Math.sin(a) * r;
+              orbRef.current.style.transform = `translate(${x}px, ${y}px)`;
+            },
+          });
+          cleanupFns.push(() => { if (orbit && typeof orbit === 'function') orbit(); });
+        } else {
+          const orbit = animateFn({
+            targets: state,
+            angle: 360,
+            duration: 6000,
+            easing: "linear",
+            loop: true,
+            update: () => {
+              if (!orbRef.current) return;
+              const a = (state.angle * Math.PI) / 180;
+              const r = 26;
+              const x = Math.cos(a) * r;
+              const y = Math.sin(a) * r;
+              orbRef.current.style.transform = `translate(${x}px, ${y}px)`;
+            },
+          }) as any;
+          cleanupFns.push(() => { if (orbit && orbit.pause) orbit.pause(); });
+        }
+      }
+    })();
+
+    return () => {
+      cleanupFns.forEach((fn) => fn());
+      if (sheenRef.current) {
+        sheenRef.current.style.transform = "";
+        sheenRef.current.style.opacity = "";
+      }
+      if (orbRef.current) {
+        orbRef.current.style.transform = "";
       }
     };
   }, [isMobile]);
@@ -103,8 +226,12 @@ const Hero = () => {
               className="section-title text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight opacity-0 animate-fade-in" 
               style={{ animationDelay: "0.1s" }}
             >
-              <span className="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-brand-primary via-brand-primary to-accent">
-                Eternima
+              <span className="relative inline-block">
+                <span className="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-brand-primary via-brand-primary to-accent">
+                  Eternima
+                </span>
+                {/* Sheen bar overlay (feature-flagged via effect) */}
+                <span ref={sheenRef} aria-hidden className="sheen-bar absolute inset-y-0 left-0 w-[40%] -translate-x-[120%]"></span>
               </span>
               {" "}—{" "}
               <span className="text-gray-900">preserve your life, voice, and memory forever</span>
@@ -137,17 +264,27 @@ const Hero = () => {
             >
               <a 
                 href="#how-it-works" 
-                className="button-primary flex items-center justify-center group w-full sm:w-auto text-center"
+                className="button-primary flex items-center justify-center group w-full sm:w-auto text-center relative overflow-hidden hover:animate-pulse-glow"
               >
                 Get the App — start your reflection
                 <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
               </a>
               <a 
                 href="#how-it-works" 
-                className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-brand-primary text-brand-primary hover:bg-brand-primary/10 rounded-lg font-semibold transition-colors flex items-center justify-center w-full sm:w-auto text-center"
+                className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-brand-primary text-brand-primary hover:bg-brand-primary/10 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center w-full sm:w-auto text-center opacity-0 animate-fade-in animation-delay-200"
               >
                 How it works
               </a>
+            </div>
+            
+            {/* Floating Privacy Badge */}
+            <div 
+              className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-tertiary/30 border border-brand-tertiary opacity-0 animate-slide-in-right animation-delay-1000"
+            >
+              <svg className="w-4 h-4 text-brand-primary" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              <span className="text-sm font-medium text-gray-700">Private by Design</span>
             </div>
           </div>
           
@@ -160,6 +297,8 @@ const Hero = () => {
                   loop={true}
                   autoplay={true}
                 />
+                {/* Hero orbiting orb */}
+                <span ref={orbRef} aria-hidden className="hero-orb absolute top-[25%] left-[70%]" />
               </div>
             ) : (
               <>
@@ -173,6 +312,8 @@ const Hero = () => {
                   style={{ transformStyle: 'preserve-3d' }} 
                 />
                 <div className="absolute inset-0" style={{ backgroundImage: 'url("/hero-image.jpg")', backgroundSize: 'cover', backgroundPosition: 'center', mixBlendMode: 'overlay', opacity: 0.5 }}></div>
+                {/* Hero orbiting orb (image fallback) */}
+                <span ref={orbRef} aria-hidden className="hero-orb absolute top-[25%] left-[70%]" />
               </div>
               </>
             )}
